@@ -1,20 +1,29 @@
 import "./App.css";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import shoeInfo from "./data";
+import restShoes from "./data2";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import DetailPage from "./routes/detailpage";
 import MainPage from "./routes/mainpage";
 import NavbarCompo from "./components/navbar";
 import Event from "./components/event";
 import Cart from "./routes/Cart";
+import ProductsAll from "./routes/ProductsAll";
+import Loading from "./components/loading";
 
 function App() {
   // STATEs AND VARs
   let [shoes, setShoes] = useState(shoeInfo);
-  let [stocks, setStocks] = useState([10, 11, 12]);
+  let [restShoesAll, setRestShoesAll] = useState(restShoes);
+  let [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    setLoading(false);
+  }, []);
   return (
     <div className="App">
+      {loading == true ? <Loading /> : null}
+
       {/* NAV BAR */}
       <NavbarCompo />
       {/* ROUTER */}
@@ -23,8 +32,14 @@ function App() {
           path="/"
           element={<MainPage shoes={shoes} setShoes={setShoes} />}
         />
-        <Route path="/detail" element={<div>Detail ALL</div>} />
-        <Route path="/detail/:id" element={<DetailPage shoes={shoes} />} />
+        <Route
+          path="/products"
+          element={<ProductsAll shoes={shoes} restShoes={restShoesAll} />}
+        />
+        <Route
+          path="/detail/:id"
+          element={<DetailPage shoes={shoes} restShoes={restShoesAll} />}
+        />
         <Route path="/about" element={<About />}>
           <Route path="members" element={<div>Members</div>} />
           <Route path="location" element={<div>Location</div>} />

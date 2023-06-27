@@ -2,16 +2,23 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import DetailNav from "../components/detailnav";
 import Loading from "../components/loading";
+import { addCart } from "../store";
+import { useDispatch, useSelector } from "react-redux";
 
 function DetailPage(props) {
   let { id } = useParams();
-  let correctShoe = props.shoes.find((shoe) => {
+  let correctShoe = [...props.shoes, ...props.restShoes].find((shoe) => {
     return shoe.id == id;
   });
   let [discount, setDiscount] = useState(true);
   let [inputVal, setInputVal] = useState("");
   let [loading, setLoading] = useState(true);
   let [fade, setFade] = useState("");
+
+  let cart = useSelector((state) => state.cart);
+  let dispatch = useDispatch();
+
+  console.log(cart);
 
   useEffect(() => {
     setFade("end");
@@ -75,7 +82,18 @@ function DetailPage(props) {
                 }}
               />
             </p>
-            <button className="btn btn-danger">Buy</button>
+            {/* <button className="btn btn-danger me-3">Buy</button> */}
+            <button
+              className="btn btn-danger"
+              onClick={() => {
+                correctShoe.count = 1;
+                dispatch(addCart(correctShoe));
+                console.log(correctShoe);
+                console.log(cart);
+              }}
+            >
+              Add to Cart
+            </button>
           </div>
         </div>
         <DetailNav />

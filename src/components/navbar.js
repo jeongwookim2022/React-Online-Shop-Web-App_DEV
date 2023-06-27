@@ -14,14 +14,14 @@ function NavbarCompo() {
           {/* <Link to="/">Home</Link> */}
           <Nav.Link
             onClick={() => {
-              navigate("/detail");
+              navigate("/products");
             }}
           >
-            Detail
+            Products
           </Nav.Link>
-          {/* <Link to="/detail">dd</Link> */}
           <Nav.Link href="/cart">Cart</Nav.Link>
           <Nav.Link href="#pricing">Prices</Nav.Link>
+          <Nav.Link href="/about">About</Nav.Link>
         </Nav>
       </Container>
     </Navbar>

@@ -7,10 +7,11 @@ import Loading from "../components/loading";
 function MainPage(props) {
   let [btnCount, setBtnCount] = useState(1);
   let [loading, setLoading] = useState(false);
+  let [tempShoes, setTempShoes] = useState([...props.shoes]);
 
-  useEffect(() => {
-    console.log(btnCount);
-  }, [btnCount]);
+  // useEffect(() => {
+  //   console.log(btnCount);
+  // }, [btnCount]);
 
   return (
     <>
@@ -20,11 +21,11 @@ function MainPage(props) {
           {/* LOADING COMPONENT */}
           {loading == true ? <Loading /> : null}
           <div className="products-group row">
-            <ShoesCompo shoes={props.shoes} setShoes={props.setShoes} />
+            <ShoesCompo shoes={tempShoes} />
           </div>
         </div>
       </div>
-      {btnCount !== 3 ? (
+      {btnCount < 3 ? (
         <button
           className="btn-more-items"
           onClick={() => {
@@ -34,7 +35,7 @@ function MainPage(props) {
             axios
               .get(`https://codingapple1.github.io/shop/data${btnCount}.json`)
               .then((data) => {
-                props.setShoes([...props.shoes, ...data.data]);
+                setTempShoes([...tempShoes, ...data.data]);
 
                 setLoading(false);
               })

@@ -2,8 +2,6 @@ import { Link, useNavigate } from "react-router-dom";
 
 // SHOES
 function ShoesCompo(props) {
-  let navigate = useNavigate();
-
   return props.shoes.map((shoe, i) => {
     return (
       <div className="product col-md-4">

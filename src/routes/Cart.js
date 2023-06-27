@@ -1,24 +1,61 @@
-import { Table } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { moreShoes, lessShoes } from "../store";
 
 function Cart() {
+  let store = useSelector((state) => state);
+  let dispatch = useDispatch();
+
+  console.log(store.cart);
   return (
     <div>
+      <h6>{store.users.name}'s Cart</h6>
       <Table>
         <thead>
           <tr>
             <th>#</th>
-            <th>상품명</th>
-            <th>수량</th>
-            <th>변경하기</th>
+            <th>title</th>
+            <th>Quantities</th>
+            <th>Change</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>안녕</td>
-            <td>안녕</td>
-            <td>안녕</td>
-          </tr>
+          {store.cart.map((shoe, i) => {
+            return (
+              <tr key={i}>
+                <td>{i + 1}</td>
+                <td>
+                  <img
+                    src={`https://codingapple1.github.io/shop/shoes${
+                      shoe.id + 1
+                    }.jpg`}
+                    width="50px"
+                  />
+                  {shoe.title}
+                </td>
+                <td>{shoe.count}</td>
+                <td>
+                  <Button
+                    variant="secondary"
+                    className="me-2"
+                    onClick={() => dispatch(moreShoes(shoe.id))}
+                  >
+                    +
+                  </Button>
+                  <Button
+                    variant="secondary"
+                    onClick={() =>
+                      shoe.count > 0 && shoe.count != 0
+                        ? dispatch(lessShoes(shoe.id))
+                        : null
+                    }
+                  >
+                    ㅡ
+                  </Button>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </Table>
     </div>
