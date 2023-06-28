@@ -86,10 +86,7 @@ function DetailPage(props) {
             <button
               className="btn btn-danger"
               onClick={() => {
-                correctShoe.count = 1;
-                dispatch(addCart(correctShoe));
-                console.log(correctShoe);
-                console.log(cart);
+                dispatch(addCart({ ...correctShoe, count: 1 }));
               }}
             >
               Add to Cart

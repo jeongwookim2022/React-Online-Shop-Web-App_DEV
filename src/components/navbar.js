@@ -9,7 +9,13 @@ function NavbarCompo() {
   return (
     <Navbar bg="light" variant="light">
       <Container>
-        <Navbar.Brand href="/">ShoeTockholm</Navbar.Brand>
+        <Navbar.Brand
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          ShoeTockholm
+        </Navbar.Brand>
         <Nav className="me-auto">
           {/* <Link to="/">Home</Link> */}
           <Nav.Link
@@ -19,9 +25,27 @@ function NavbarCompo() {
           >
             Products
           </Nav.Link>
-          <Nav.Link href="/cart">Cart</Nav.Link>
-          <Nav.Link href="#pricing">Prices</Nav.Link>
-          <Nav.Link href="/about">About</Nav.Link>
+          <Nav.Link
+            onClick={() => {
+              navigate("/cart");
+            }}
+          >
+            Cart
+          </Nav.Link>
+          <Nav.Link
+            onClick={() => {
+              navigate("/");
+            }}
+          >
+            Prices
+          </Nav.Link>
+          <Nav.Link
+            onClick={() => {
+              navigate("/about");
+            }}
+          >
+            About
+          </Nav.Link>
         </Nav>
       </Container>
     </Navbar>

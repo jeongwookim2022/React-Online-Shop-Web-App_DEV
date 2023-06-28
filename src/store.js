@@ -25,13 +25,31 @@ let cart = createSlice({
       });
     },
     addCart(state, addedShoe) {
-      state.push(addedShoe.payload);
-      console.log(state);
+      let duplicated = false;
+      state.forEach((shoe, i) => {
+        if (shoe.id == addedShoe.payload.id) {
+          duplicated = true;
+        }
+      });
+
+      if (duplicated == false) {
+        state.push(addedShoe.payload);
+      } else {
+        alert("You already have the same Product in your cart.");
+      }
+    },
+    removeCart(state, willRemoveShoe) {
+      for (let i = 0; i < state.length; i++) {
+        if (state[i].id == willRemoveShoe.payload) {
+          state.splice(i, 1);
+        }
+      }
     },
   },
 });
 
-export let { moreShoes, addCart, lessShoes } = cart.actions;
+export let { moreShoes, addCart, lessShoes, removeCart } = cart.actions;
+export let dd = cart.actions;
 
 export default configureStore({
   reducer: {

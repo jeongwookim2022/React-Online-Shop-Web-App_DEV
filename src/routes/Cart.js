@@ -1,12 +1,11 @@
 import { Button, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { moreShoes, lessShoes } from "../store";
+import { moreShoes, lessShoes, removeCart } from "../store";
 
 function Cart() {
   let store = useSelector((state) => state);
   let dispatch = useDispatch();
 
-  console.log(store.cart);
   return (
     <div>
       <h6>{store.users.name}'s Cart</h6>
@@ -44,6 +43,7 @@ function Cart() {
                   </Button>
                   <Button
                     variant="secondary"
+                    className="me-3"
                     onClick={() =>
                       shoe.count > 0 && shoe.count != 0
                         ? dispatch(lessShoes(shoe.id))
@@ -51,7 +51,13 @@ function Cart() {
                     }
                   >
                     ㅡ
-                  </Button>
+                  </Button>{" "}
+                  <Button
+                    variant="danger"
+                    onClick={() => dispatch(removeCart(shoe.id))}
+                  >
+                    X
+                  </Button>{" "}
                 </td>
               </tr>
             );
