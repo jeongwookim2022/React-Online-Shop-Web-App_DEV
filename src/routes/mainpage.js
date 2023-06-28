@@ -2,6 +2,7 @@ import axios from "axios";
 import ShoesCompo from "../components/shoes";
 import { useEffect, useState } from "react";
 import Loading from "../components/loading";
+import Watched from "../components/watched";
 
 //MAIN
 function MainPage(props) {
@@ -9,12 +10,10 @@ function MainPage(props) {
   let [loading, setLoading] = useState(false);
   let [tempShoes, setTempShoes] = useState([...props.shoes]);
 
-  // useEffect(() => {
-  //   console.log(btnCount);
-  // }, [btnCount]);
-
   return (
     <>
+      {/* WATCHED */}
+      <Watched shoes={props.shoes} restShoes={props.restShoes} />
       <div>
         <div className="main-bg" />
         <div className="container">

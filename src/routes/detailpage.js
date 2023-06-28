@@ -18,8 +18,6 @@ function DetailPage(props) {
   let cart = useSelector((state) => state.cart);
   let dispatch = useDispatch();
 
-  console.log(cart);
-
   useEffect(() => {
     setFade("end");
   }, []);

@@ -17,7 +17,7 @@ function ProductsAll(props) {
       {loading == true ? <Loading /> : null}
 
       <div>
-        <div className="main-bg" />
+        {/* <div className="main-bg" /> */}
         <div className="container">
           <div className="products-group row">
             <ShoesCompo shoes={shoesAll} />

@@ -17,20 +17,25 @@ function App() {
   let [restShoesAll, setRestShoesAll] = useState(restShoes);
   let [loading, setLoading] = useState(true);
 
+  // Loading and LocalStorage instead DB
   useEffect(() => {
+    localStorage.setItem("watched", JSON.stringify([]));
     setLoading(false);
   }, []);
+
   return (
     <div className="App">
       {loading == true ? <Loading /> : null}
 
       {/* NAV BAR */}
-      <NavbarCompo />
+      <NavbarCompo shoes={shoes} />
       {/* ROUTER */}
       <Routes>
         <Route
           path="/"
-          element={<MainPage shoes={shoes} setShoes={setShoes} />}
+          element={
+            <MainPage shoes={shoes} setShoes={setShoes} restShoes={restShoes} />
+          }
         />
         <Route
           path="/products"
