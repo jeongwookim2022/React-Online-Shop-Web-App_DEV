@@ -11,6 +11,7 @@ function ShoesCompo(props) {
     localStorage.setItem("watched", JSON.stringify(watched));
     console.log(watched);
   }
+
   return props.shoes.map((shoe, i) => {
     return (
       <div className="product col-md-4">
