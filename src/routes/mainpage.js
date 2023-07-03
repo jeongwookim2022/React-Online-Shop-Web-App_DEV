@@ -3,6 +3,8 @@ import ShoesCompo from "../components/shoes";
 import { useEffect, useState } from "react";
 import Loading from "../components/loading";
 import Watched from "../components/watched";
+import Carousel from "../components/Carousel";
+import MainPageAni from "../components/MainPageAni";
 
 //MAIN
 function MainPage(props) {
@@ -15,7 +17,7 @@ function MainPage(props) {
       {/* WATCHED */}
       <Watched shoes={props.shoes} restShoes={props.restShoes} />
       <div>
-        <div className="main-bg" />
+        <Carousel />
         <div className="container">
           {/* LOADING COMPONENT */}
           {loading == true ? <Loading /> : null}
@@ -50,6 +52,7 @@ function MainPage(props) {
       ) : (
         <NoItems />
       )}
+      <MainPageAni />
     </>
   );
 }
@@ -57,7 +60,7 @@ function MainPage(props) {
 function NoItems() {
   return (
     <div className="no-items">
-      <p>No Items...</p>
+      <p>No Items... :(</p>
     </div>
   );
 }

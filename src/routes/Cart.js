@@ -7,8 +7,8 @@ function Cart() {
   let dispatch = useDispatch();
 
   return (
-    <div>
-      <h6>{store.users.name}'s Cart</h6>
+    <div className="cart-table">
+      {/* <h6>{store.users.name}'s Cart</h6> */}
       <Table>
         <thead>
           <tr>
@@ -29,6 +29,10 @@ function Cart() {
                       shoe.id + 1
                     }.jpg`}
                     width="50px"
+                    onError={(e) => {
+                      e.target.src =
+                        "https://cdn.pixabay.com/photo/2016/06/03/17/35/shoes-1433925_1280.jpg";
+                    }}
                   />
                   {shoe.title}
                 </td>

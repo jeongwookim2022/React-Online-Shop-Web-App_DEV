@@ -1,12 +1,19 @@
 import axios from "axios";
-import { Navbar, Container, Nav } from "react-bootstrap";
+import { Navbar, Container, Nav, Col, Badge } from "react-bootstrap";
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCartShopping,
+  faUser,
+  faHeadset,
+} from "@fortawesome/free-solid-svg-icons";
+import { useSelector } from "react-redux";
 
-// NAV BAR
 // NAV BAR
 function NavbarCompo() {
   let navigate = useNavigate();
+  let store = useSelector((state) => state);
 
   // GET user data from server Using REACT-QUERY
   // - it automatically refetches data
@@ -27,7 +34,7 @@ function NavbarCompo() {
   // result.error
 
   return (
-    <Navbar bg="light" variant="light">
+    <Navbar bg="dark" variant="dark">
       <Container>
         <Navbar.Brand
           onClick={() => {
@@ -54,27 +61,50 @@ function NavbarCompo() {
           </Nav.Link>
           <Nav.Link
             onClick={() => {
-              navigate("/");
+              navigate("#");
             }}
           >
             Prices
           </Nav.Link>
           <Nav.Link
             onClick={() => {
-              navigate("/about");
+              navigate("#");
             }}
           >
             About
           </Nav.Link>
         </Nav>
-        <Nav className="ms-auto">
+        <Nav className="ms-auto me-3">
           {result.isLoading && "Loading..."}
           {result.error && "Error"}
-          {result.data && `Hej, ${result.data.name}`}
+          {result.data && (
+            // <span style={{ color: "white" }}>Hej, {result.data.name}</span>
+            <span style={{ color: "white" }}>Hej</span>
+          )}
+        </Nav>
+        <Nav style={{ color: "white" }}>
+          <FontAwesomeIcon
+            icon={faUser}
+            className="me-3 fs-5 nav-bar-emoji"
+            onClick={() => {}}
+          />
+          <FontAwesomeIcon
+            icon={faHeadset}
+            className="me-3 fs-5 nav-bar-emoji"
+          />
+          <FontAwesomeIcon
+            icon={faCartShopping}
+            className="cart-icon me-3 fs-5 nav-bar-emoji"
+            onClick={() => {
+              navigate("/cart");
+            }}
+          />
+          <Badge bg="danger" className="cart-badge-num">
+            {store.cart.length}
+          </Badge>
         </Nav>
       </Container>
     </Navbar>
   );
 }
-
 export default NavbarCompo;

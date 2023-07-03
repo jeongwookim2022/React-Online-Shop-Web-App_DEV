@@ -1,7 +1,12 @@
-import { useContext, useEffect, useState } from "react";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useContext, useEffect, useState, useRef } from "react";
 import Nav from "react-bootstrap/Nav";
+import ReactPlayer from "react-player";
+import Reviews from "./Reviews";
+import { useSelector, useDispatch } from "react-redux";
 
-function DetailNav() {
+function DetailNav(props) {
   let [tab, setTab] = useState(0);
 
   return (
@@ -34,13 +39,12 @@ function DetailNav() {
         </Nav.Item>
       </Nav>
 
-      {/* {tab == 0 ? <TabContent /> : tab == 1 ? <TabContent /> : null} */}
-      <TabContent tab={tab} />
+      <TabContent tab={tab} shoeId={props.shoeId} />
     </div>
   );
 }
 
-function TabContent({ tab }) {
+function TabContent({ tab, shoeId }) {
   let [fade, setFade] = useState("");
 
   useEffect(() => {
@@ -56,16 +60,25 @@ function TabContent({ tab }) {
 
   return (
     <div className={`start ${fade}`}>
-      {[<ProductDetail />, <Reviews />][tab]}
+      {[<ProductDetail />, <Reviews shoeId={shoeId} />][tab]}
     </div>
   );
 }
 
 function ProductDetail() {
-  return <div>0</div>;
-}
-function Reviews() {
-  return <div>1</div>;
+  return (
+    <>
+      <ReactPlayer
+        url="https://youtu.be/-SBsT032jVI"
+        playing={true}
+        muted={true}
+        controls
+        width="100%"
+        height="70vh"
+        className="mb-5 p-2"
+      />
+    </>
+  );
 }
 
 export default DetailNav;

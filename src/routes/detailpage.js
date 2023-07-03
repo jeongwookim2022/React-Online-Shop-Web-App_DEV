@@ -4,6 +4,7 @@ import DetailNav from "../components/detailnav";
 import Loading from "../components/loading";
 import { addCart } from "../store";
 import { useDispatch, useSelector } from "react-redux";
+import { Button } from "react-bootstrap";
 
 function DetailPage(props) {
   let { id } = useParams();
@@ -28,7 +29,7 @@ function DetailPage(props) {
   useEffect(() => {
     let discountTimer = setTimeout(() => {
       setDiscount(false);
-    }, 2000);
+    }, 5000);
     // LOADING
     setLoading(false);
 
@@ -57,14 +58,18 @@ function DetailPage(props) {
       {loading == true ? <Loading /> : null}
       <div className={`container start ${fade}`}>
         {/* DISCOUNT */}
-        {discount == true ? <Discount /> : null}
-        <div className="row">
+        {/* {discount == true ? <Discount /> : null} */}
+        <div className="row mt-4">
           <div className="col-md-6">
             <img
               src={`https://codingapple1.github.io/shop/shoes${
                 correctShoe.id + 1
               }.jpg`}
               width="100%"
+              onError={(e) => {
+                e.target.src =
+                  "https://cdn.pixabay.com/photo/2016/06/03/17/35/shoes-1433925_1280.jpg";
+              }}
             />
           </div>
           <div className="col-md-6">
@@ -91,14 +96,23 @@ function DetailPage(props) {
             </button>
           </div>
         </div>
-        <DetailNav />
+        <DetailNav shoeId={correctShoe.id} />
       </div>
     </>
   );
 }
 
 function Discount() {
-  return <div className="alert alert-warning">Discount for 2 Seconds!</div>;
+  return (
+    <div className=" alert alert-warning mt-3">
+      Discount for 5 Seconds.
+      <br />
+      Click to get a discount coupon!
+      <div className="mt-1">
+        <button class="ani-btn">Click me</button>
+      </div>
+    </div>
+  );
 }
 
 export default DetailPage;

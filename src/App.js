@@ -10,6 +10,7 @@ import Loading from "./components/loading";
 import Event from "./components/event";
 import Cart from "./routes/Cart";
 import ProductsAll from "./routes/ProductsAll";
+import Footer from "./routes/Footer";
 
 // LAZY IMPORT
 const DetailPage = lazy(() => import("./routes/detailpage"));
@@ -24,15 +25,16 @@ function App() {
   let [loading, setLoading] = useState(true);
 
   // Loading and LocalStorage instead DB
+  if (localStorage.getItem("watched") == undefined) {
+    localStorage.setItem("watched", JSON.stringify([]));
+  }
   useEffect(() => {
-    if (localStorage.getItem("watched") == undefined) {
-      localStorage.setItem("watched", JSON.stringify([]));
-    }
     setLoading(false);
   }, []);
 
   return (
     <div className="App">
+      {/* LOADING */}
       {loading == true ? <Loading /> : null}
 
       {/* NAV BAR */}
@@ -58,10 +60,11 @@ function App() {
             path="/detail/:id"
             element={<DetailPage shoes={shoes} restShoes={restShoesAll} />}
           />
-          <Route path="/about" element={<About />}>
+          {/* <Route path="/about" element={<About />}>
             <Route path="members" element={<div>Members</div>} />
             <Route path="location" element={<div>Location</div>} />
-          </Route>
+          </Route> */}
+          {/* <Route path="/about" element={<About />} /> */}
           <Route path="/event" element={<Event />}>
             <Route path="one" element={<p>1. Birthday Event</p>} />
             <Route path="two" element={<p>2. First order Event</p>} />
@@ -70,13 +73,15 @@ function App() {
           <Route path="*" element={<div>404 Page None</div>} />
         </Routes>
       </Suspense>
+      {/* FOOTER */}
+      <Footer />
     </div>
   );
 }
 
 function About() {
   return (
-    <div>
+    <div style={{ height: "100vw" }}>
       <h4>About our company</h4>
       <Outlet />
     </div>

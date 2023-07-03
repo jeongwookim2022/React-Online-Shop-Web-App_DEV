@@ -22,6 +22,10 @@ function ShoesCompo(props) {
             }}
             src={`https://codingapple1.github.io/shop/shoes${shoe.id + 1}.jpg`}
             width="80%"
+            onError={(e) => {
+              e.target.src =
+                "https://cdn.pixabay.com/photo/2016/06/03/17/35/shoes-1433925_1280.jpg";
+            }}
           />
         </Link>
         <h4>{shoe.title}</h4>

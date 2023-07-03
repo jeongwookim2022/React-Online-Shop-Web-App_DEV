@@ -1,10 +1,6 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
-import users from "./store/userState";
-
-let stocks = createSlice({
-  name: "stocks",
-  initialState: [10, 11, 12],
-});
+import rates from "./store/rateGroup";
+import { useEffect } from "react";
 
 //  CART
 let cart = createSlice({
@@ -47,14 +43,40 @@ let cart = createSlice({
     },
   },
 });
-
 export let { moreShoes, addCart, lessShoes, removeCart } = cart.actions;
-export let dd = cart.actions;
+
+// COMMENTS
+let commentShow = createSlice({
+  name: "commentShow",
+  initialState: false,
+  reducers: {
+    setCommentShowTrue(state) {
+      return (state = true);
+    },
+  },
+});
+export let { setCommentShowTrue } = commentShow.actions;
+
+let commentGroup = createSlice({
+  name: "commentGroup",
+  // initialState: [Array.from({ length: 9 }, () => [])],
+  initialState: [Array.from({ length: 9 }, () => [])],
+  reducers: {
+    addComment(state, addedComment) {
+      let stateA = [...state];
+
+      stateA[0][addedComment.payload[0]].push(addedComment.payload[1]);
+      console.log(stateA);
+    },
+  },
+});
+export let { addComment } = commentGroup.actions;
 
 export default configureStore({
   reducer: {
-    users: users.reducer,
-    stocks: stocks.reducer,
     cart: cart.reducer,
+    rates: rates.reducer,
+    commentShow: commentShow.reducer,
+    commentGroup: commentGroup.reducer,
   },
 });
