@@ -1,6 +1,7 @@
 # Responsive React Shoes Shop
 ## Click: [DEMO](https://shoetockholm.netlify.app/)
 
+### #React #CSS #HTML #JavaScript #Redux.js
 ### 1. Main page(Desktop and Mobile)
 - Applied Carousel and Implemented a button for more items and Scroll animation for better UI.
 ![Screenshot (1473)](https://github.com/jeongwookim2022/React-Online-Shop-Web-App_DEV/assets/109917393/02cbd7ea-04bf-417b-9b48-423660037d6a)
