@@ -1,4 +1,4 @@
-# Responsive React Shoe Shop
+# Responsive React Shoes Shop
 ## Click: [DEMO](https://shoetockholm.netlify.app/)
 
 ### 1. Main page(Desktop and Mobile)
