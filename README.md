@@ -6,9 +6,9 @@
 ![Screenshot (1473)](https://github.com/jeongwookim2022/React-Online-Shop-Web-App_DEV/assets/109917393/02cbd7ea-04bf-417b-9b48-423660037d6a)
 ![Screenshot (1474)](https://github.com/jeongwookim2022/React-Online-Shop-Web-App_DEV/assets/109917393/daf590de-12e1-44d0-9fac-e7212c8ace58)
 ![Screenshot (1475)](https://github.com/jeongwookim2022/React-Online-Shop-Web-App_DEV/assets/109917393/e8edb05d-5bc7-4612-9326-5d20e105b95f)
-![Uploading Screenshot (1476).png…]()
+![Screenshot (1476)](https://github.com/jeongwookim2022/React-Online-Shop-Web-App_DEV/assets/109917393/45da1eb0-3c14-4c50-8b71-1c106aba4a8f)
 ![Screenshot (1477)](https://github.com/jeongwookim2022/React-Online-Shop-Web-App_DEV/assets/109917393/74bd0b6a-f788-4d14-9b9c-ed3f9f1bb94a)
-![Uploading Screenshot (1478).png…]()
+![Screenshot (1478)](https://github.com/jeongwookim2022/React-Online-Shop-Web-App_DEV/assets/109917393/b39bdbb2-eb36-44e5-92b1-fee88575da3c)
 
 - You can see the list of items you WATCHED and delete it if you want.
 ![Screenshot (1479)](https://github.com/jeongwookim2022/React-Online-Shop-Web-App_DEV/assets/109917393/b64b838b-e0e8-4abc-9ebb-5a436f8e5cb7)
@@ -23,7 +23,7 @@
 ![Screenshot (1481)](https://github.com/jeongwookim2022/React-Online-Shop-Web-App_DEV/assets/109917393/1e7ab446-012e-4e4e-8512-54b6dde5d938)
 ![Screenshot (1482)](https://github.com/jeongwookim2022/React-Online-Shop-Web-App_DEV/assets/109917393/cca9de4e-8536-4b2c-9dea-313ab7193626)
 ![Screenshot (1483)](https://github.com/jeongwookim2022/React-Online-Shop-Web-App_DEV/assets/109917393/4afb98dc-c64f-47ef-bdc6-caf3e574510e)
-![Uploading Screenshot (1484).png…]()
+![Screenshot (1484)](https://github.com/jeongwookim2022/React-Online-Shop-Web-App_DEV/assets/109917393/f3981642-fa68-486c-a3ed-f04a20cbc972)
 
 
 ### 3. Cart page
